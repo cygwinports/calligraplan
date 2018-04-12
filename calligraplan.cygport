@@ -1,0 +1,40 @@
+inherit kf5
+
+NAME="calligraplan"
+VERSION=3.1.0
+RELEASE=1
+CATEGORY="Office"
+SUMMARY="KDE project management application (aka KPlato)"
+DESCRIPTION="Calligra Suite is a set of productivity applications for the KDE desktop."
+HOMEPAGE="http://www.calligra.org/"
+SRC_URI="mirror://kde/stable/calligra/${VERSION}/calligraplan-${VERSION}.tar.xz"
+PATCH_URI="
+	3.1.0-bko291374.patch
+	3.1.0-dllexport.patch
+"
+
+PKG_NAMES="calligraplan"
+calligraplan_OBSOLETES="calligra-plan"
+calligraplan_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	etc/xdg/calligraplan*
+	usr/bin/calligraplan*.exe
+	usr/bin/cygkdeinit5_calligraplan*.dll
+	usr/bin/cygkplato*.dll
+	usr/bin/cygplan*.dll
+	usr/lib/qt5/plugins/calligraplan/
+	usr/lib/qt5/plugins/calligraplanworkpart.dll
+	usr/share/applications/org.kde.calligraplan*.desktop
+	usr/share/calligraplan*/
+	usr/share/config.kcfg/calligraplan*settings.kcfg
+	usr/share/doc/${NAME}
+	usr/share/icons/hicolor/*/apps/calligraplan*
+	usr/share/icons/hicolor/*/mimetypes/application-x-vnd.kde.*
+	usr/share/kxmlgui5/calligraplan*
+	usr/share/locale/*/LC_MESSAGES/*plan*
+	usr/share/metainfo/org.kde.calligraplan.appdata.xml
+"
+PKG_IGNORE="
+	usr/lib/libkplato*.dll.a
+	usr/lib/libplan*.dll.a
+"

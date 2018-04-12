@@ -1,0 +1,21 @@
+--- src/libs/main/KoFilterChain.cpp	2017-03-18 20:34:17.000000000 -0500
++++ src/libs/main/KoFilterChain.cpp	2017-11-06 16:55:46.758976100 -0600
+@@ -381,7 +381,7 @@ void KoFilterChain::inputFileHelper(KoDo
+         }
+         m_inputFile = m_inputTempFile->fileName();
+         // See "Note about Windows & usage of QTemporaryFile" above
+-#ifdef Q_OS_WIN
++#if defined Q_OS_WIN || defined Q_OS_CYGWIN
+         m_inputTempFile->close();
+         m_inputTempFile->setAutoRemove(true);
+         delete m_inputTempFile;
+@@ -408,7 +408,7 @@ void KoFilterChain::outputFileHelper(boo
+         m_outputFile = m_outputTempFile->fileName();
+ 
+         // See "Note about Windows & usage of QTemporaryFile" above
+-#ifdef Q_OS_WIN
++#if defined Q_OS_WIN || defined Q_OS_CYGWIN
+         m_outputTempFile->close();
+         m_outputTempFile->setAutoRemove(true);
+         delete m_outputTempFile;
+

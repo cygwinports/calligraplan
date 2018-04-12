@@ -1,0 +1,19 @@
+--- origsrc/calligraplan-3.1.0/src/libs/main/tests/CMakeLists.txt	2018-01-26 03:24:44.000000000 -0600
++++ src/calligraplan-3.1.0/src/libs/main/tests/CMakeLists.txt	2018-04-12 17:48:42.538030700 -0500
+@@ -15,6 +15,7 @@ endmacro()
+ 
+ set(priorityqueue_test_SRCS priorityqueue_test.cpp ../MainDebug.cpp)
+ planmain_add_unit_test(priorityQueueTest ${priorityqueue_test_SRCS}  LINK_LIBRARIES KF5::I18n Qt5::Test)
++set_target_properties(PlanpriorityQueueTest PROPERTIES COMPILE_DEFINITIONS "KOMAIN_STATIC_DEFINE")
+ 
+ ########### next target ###############
+ 
+--- origsrc/calligraplan-3.1.0/src/plugins/schedulers/tj/CMakeLists.txt	2018-01-26 03:24:44.000000000 -0600
++++ src/calligraplan-3.1.0/src/plugins/schedulers/tj/CMakeLists.txt	2018-04-12 16:43:57.562112900 -0500
+@@ -56,6 +56,4 @@ target_link_libraries(
+     kplatokernel
+ )
+ 
+-set_target_properties( plantjscheduler PROPERTIES DEFINE_SYMBOL MAKE_KPLATOTJ_LIB )
+-
+ install( TARGETS plantjscheduler DESTINATION ${PLUGIN_INSTALL_DIR}/calligraplan/schedulers )
